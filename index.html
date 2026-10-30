@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>T D Owen | The Cage Full of Birds</title>
+<meta name="description" content="T D Owen writes The Gilles of Bec Chronicles: a historical mystery set in 12th century Oxfordshire and Berkshire during The Anarchy.">
+<meta property="og:title" content="A homepage for T D Owen, made by Sparsh Saini">
+<meta property="og:description" content="A homepage idea for T D Owen and Gilles of Bec and The Cage Full of Birds, made by Sparsh Saini. Not his official site.">
+<meta property="og:image" content="https://sparshsainied-prog.github.io/tdowen/img/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%235157c2'/><path d='M4 18c6-6 9-6 12-2 3-4 6-4 12 2-5-2-8-1-12 3-4-4-7-5-12-3z' fill='%23111'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/plate.jpg">
+<style>
+/* From The Cage Full of Birds cover: indigo and lavender watercolour washes on white paper, black ink birds,
+   the lone monk on the snowy down, the dry-brush script title (Kaushan Script) and, for the chronicle,
+   an old-style book face (Cormorant Garamond). */
+:root {
+  --indigo: #3e3fa6;
+  --wash: #6a6fcb;
+  --lav: #c9c9ec;
+  --snow: #f1f1f9;
+  --paper: #fbfbfd;
+  --ink: #121216;
+  --soft: #4a4a63;
+  --script: "Kaushan Script", "Brush Script MT", cursive;
+  --text: "Cormorant Garamond", Garamond, Georgia, serif;
+  --gut: clamp(1rem, 5vw, 4rem);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--text); font-size: 1.3rem; line-height: 1.5; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--indigo); }
+:focus-visible { outline: 2px solid var(--indigo); outline-offset: 3px; }
+h2, h3 { font-family: var(--script); font-weight: 400; line-height: 1.1; margin: 0; }
+.strip { position: relative; z-index: 30; background: var(--indigo); color: #fff; font-size: 1.02rem; text-align: center; padding: .4rem var(--gut); }
+
+/* one of the cover's birds, as the menu */
+.bird { position: fixed; z-index: 40; right: 10px; top: 10px; width: 64px; height: 50px; border: 0; padding: 0; background: rgba(251,251,253,.9) url(img/bird2.webp) center / 52px auto no-repeat; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 8px rgba(18,18,22,.18); }
+.menu { position: fixed; z-index: 50; inset: 0; background: rgba(62, 63, 166, .55); display: none; }
+.menu.open { display: block; }
+.menu nav { position: absolute; right: 10px; top: 70px; width: min(330px, calc(100% - 20px)); background: var(--paper); padding: 1.1rem 1.4rem; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+.menu ol { list-style: none; margin: 0; padding: 0; }
+.menu a { display: block; padding: .4rem 0; font-size: 1.35rem; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--lav); }
+.menu .x { position: absolute; right: .7rem; top: .4rem; background: none; border: 0; font-family: var(--text); font-size: 1.1rem; color: var(--soft); cursor: pointer; }
+
+/* ---------- the birds let go ---------- */
+.hero { position: relative; height: 320vh; }
+.stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: var(--snow); }
+.frame { position: absolute; left: 50%; top: 0; width: min(100vw, calc((100svh - 160px) * .6667)); transform: translateX(-50%); }
+.art { position: relative; aspect-ratio: 800 / 1200; width: 100%; overflow: hidden; }
+.cam { position: absolute; inset: 0; will-change: transform; transform-origin: 27% 84%; }
+.plate { position: absolute; inset: 0; width: 100%; height: 100%; }
+.bd { position: absolute; height: auto; will-change: transform; }
+.cap { position: absolute; left: var(--gut); right: var(--gut); bottom: 14px; height: 140px; }
+.cap p { position: absolute; left: 0; right: 0; top: 0; margin: 0; font-size: 1.12rem; line-height: 1.35; will-change: opacity; }
+.cap .c2 { opacity: 0; pointer-events: none; }
+.cap .c2.live { pointer-events: auto; }
+.cap i { color: var(--indigo); }
+.btn { display: inline-block; margin: .55rem .5rem 0 0; padding: .25rem 1.1rem .3rem; font-family: var(--script); font-size: 1.15rem; text-decoration: none; color: #fff; background: var(--indigo); border-radius: 2px 14px 3px 12px; box-shadow: 3px 3px 0 var(--lav); }
+.btn:hover { background: var(--ink); }
+.btn.pale { background: var(--lav); color: var(--ink); box-shadow: 3px 3px 0 var(--indigo); }
+@media (min-width: 900px) {
+  .frame { left: auto; right: 9vw; transform: none; width: calc(100svh * .6667); }
+  .cap { left: 8vw; right: auto; width: min(28rem, 34vw); top: 50%; bottom: auto; height: 260px; transform: translateY(-50%); }
+  .cap p { font-size: 1.5rem; }
+}
+
+/* ---------- calm sections ---------- */
+section.book, section.map, section.chron, section.owen, section.fair { padding: clamp(3.5rem, 9vw, 6.5rem) var(--gut); }
+h2 { font-size: clamp(2.4rem, 8vw, 4rem); color: var(--indigo); }
+.lede { max-width: 38rem; margin: .8rem 0 0; color: var(--soft); }
+
+.book { display: grid; gap: 2rem; }
+.book p { max-width: 38rem; }
+.book img { max-width: 320px; box-shadow: 6px 8px 0 var(--lav); }
+.book blockquote { margin: 1.4rem 0; padding-left: 1.2rem; border-left: 3px solid var(--wash); font-style: italic; max-width: 36rem; }
+.book cite { display: block; font-style: normal; font-size: 1rem; color: var(--soft); margin-top: .4rem; }
+.book .rev { list-style: none; padding: 0; margin: 1rem 0; max-width: 36rem; }
+.book .rev li { font-style: italic; padding: .3rem 0; }
+@media (min-width: 900px) { .book { grid-template-columns: 320px 1fr; gap: 4.5rem; align-items: start; } }
+
+.map { background: var(--indigo); color: #fff; }
+.map h2 { color: #fff; }
+.map .lede { color: var(--lav); }
+.map dl { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; margin: 2rem 0 0; max-width: 44rem; }
+.map dt { font-family: var(--script); font-size: 1.7rem; line-height: 1.2; padding-top: .8rem; border-top: 1px solid rgba(255,255,255,.3); }
+.map dd { margin: 0; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.3); color: var(--lav); }
+.map .track { margin-top: 2rem; max-width: 40rem; font-style: italic; color: #fff; }
+
+.chron { background: var(--snow); display: grid; gap: 2.5rem; }
+.chron .lament { max-width: 40rem; font-size: 1.35rem; }
+.chron .lament::first-letter { font-family: var(--script); font-size: 4.2rem; float: left; line-height: .9; margin: .1rem .5rem 0 0; color: var(--indigo); }
+.chron .src { font-size: 1.05rem; color: var(--soft); font-style: italic; }
+.chron ul { margin: .8rem 0 0; padding-left: 1.1rem; max-width: 36rem; font-size: 1.15rem; }
+@media (min-width: 900px) { .chron { grid-template-columns: 1.4fr 1fr; gap: 4.5rem; } }
+
+.owen { display: grid; gap: 2rem; }
+.owen p { max-width: 38rem; margin: 0 0 1rem; }
+.owen img { filter: none; }
+.owen .cic { font-style: italic; color: var(--soft); }
+@media (min-width: 900px) { .owen { grid-template-columns: 1fr 1.3fr; gap: 4.5rem; align-items: center; } }
+
+.fair { background: var(--lav); text-align: center; }
+.fair .tbl { font-family: var(--script); font-size: clamp(5rem, 24vw, 9rem); line-height: 1; color: var(--ink); margin: .6rem 0 .2rem; }
+.fair p { max-width: 34rem; margin: .4rem auto; }
+.fair .talks { margin-top: 2rem; font-size: 1.2rem; }
+footer { background: var(--indigo); color: var(--lav); text-align: center; font-size: 1rem; padding: 1.2rem var(--gut) 2rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero { height: auto; }
+  .stage { position: relative; height: 100svh; }
+}
+</style>
+</head>
+<body>
+<div class="strip">A homepage idea made by Sparsh Saini for T D Owen. Not their official site.</div>
+<button class="bird" aria-expanded="false" aria-controls="menu" aria-label="Contents"></button>
+<div class="menu" id="menu">
+  <nav aria-label="Contents">
+    <button class="x" aria-label="Close the contents">close</button>
+    <ol>
+      <li><a href="#top">The Cage Full of Birds</a></li>
+      <li><a href="#book">The book</a></li>
+      <li><a href="#map">Gilles's country</a></li>
+      <li><a href="#chron">The Chronicles</a></li>
+      <li><a href="#owen">T D Owen</a></li>
+      <li><a href="#fair">Oxford, table N11</a></li>
+    </ol>
+  </nav>
+</div>
+
+<main>
+<section class="hero" id="top" aria-label="Gilles of Bec and The Cage Full of Birds">
+  <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Gilles of Bec and The Cage Full of Birds by T D Owen</h1>
+  <div class="stage">
+    <div class="frame">
+      <div class="art">
+        <div class="cam">
+          <img class="plate" src="img/plate.jpg" alt="The cover of Gilles of Bec and The Cage Full of Birds: a lone monk on a snowy down under an indigo watercolour sky full of birds" width="1120" height="1680">
+          <img class="bd" src="img/bird0.webp" alt="" width="190" height="46" style="left:56.0%;top:3.667%;width:17.0%">
+          <img class="bd" src="img/bird1.webp" alt="" width="148" height="50" style="left:0.0%;top:4.333%;width:13.25%">
+          <img class="bd" src="img/bird2.webp" alt="" width="374" height="150" style="left:12.0%;top:7.667%;width:33.375%">
+          <img class="bd" src="img/bird3.webp" alt="" width="113" height="28" style="left:77.5%;top:8.583%;width:10.125%">
+          <img class="bd" src="img/bird4.webp" alt="" width="183" height="55" style="left:65.375%;top:13.833%;width:16.375%">
+          <img class="bd" src="img/bird5.webp" alt="" width="92" height="43" style="left:39.25%;top:15.667%;width:8.25%">
+          <img class="bd" src="img/bird6.webp" alt="" width="158" height="41" style="left:62.5%;top:21.0%;width:14.125%">
+          <img class="bd" src="img/bird7.webp" alt="" width="106" height="59" style="left:79.875%;top:23.5%;width:9.5%">
+          <img class="bd" src="img/bird8.webp" alt="" width="154" height="62" style="left:12.5%;top:49.25%;width:13.75%">
+        </div>
+      </div>
+    </div>
+    <div class="cap">
+      <p class="c1">In 1138, Gilles, a monk barely into manhood, is sent by the great abbey of Bec in Normandy to its estate of Stivetun in Berchescire.</p>
+      <p class="c2">But England is falling into The Anarchy. <i>Gilles of Bec and The Cage Full of Birds</i>, the first of The Gilles of Bec Chronicles.<br><a class="btn" href="https://troubador.co.uk/bookshop/historical/gilles-of-bec-and-the-cage-full-of-birds">Buy from Troubador</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="book">
+  <img src="img/cover.jpg" alt="Gilles of Bec and The Cage Full of Birds cover" width="800" height="1200" loading="lazy">
+  <div>
+    <h2>The story of real people</h2>
+    <p class="lede">who lived and struggled in The Anarchy of twelfth century England: a stirring tale of self-discovery, the triumph of hope over doubt and, ultimately, of good over evil.</p>
+    <p>His charge seems routine: farm the abbey's lands and care for the souls of its peasant tenants. Then come the self-serving Bishops of Wyncestre and Sarum, Alvric the obdurate reeve, the seductive Maud of Walingeford, and Peter of Waneting, his old mentor from Bec, who is forever shifting shape.</p>
+    <blockquote>"It is nearly nine hundred years since my predecessor, Gilles of Bec, was appointed priest of Steventon. Yet the troubles he faced are echoed by modern day events."<cite>Rev'd Phil Sutton, St Michael and All Angels, Steventon, 2017 to 2025</cite></blockquote>
+    <ul class="rev">
+      <li>"Gilles shines through like a Candide."</li>
+      <li>"You made the landscape and period integral to the reading experience, not just the characters and plot."</li>
+      <li>"Great suspense building and humour too."</li>
+    </ul>
+    <a class="btn" href="https://troubador.co.uk/bookshop/historical/gilles-of-bec-and-the-cage-full-of-birds">Paperback, £11.99</a>
+  </div>
+</section>
+
+<section class="map" id="map">
+  <h2>Gilles's country</h2>
+  <p class="lede">The book keeps the old names. Most of them are still on the map.</p>
+  <dl>
+    <dt>Stivetun</dt><dd>Steventon, where the waters of his leat still flow</dd>
+    <dt>Berchescire</dt><dd>Berkshire</dd>
+    <dt>Oxeneford</dt><dd>Oxford</dd>
+    <dt>Wyncestre</dt><dd>Winchester, and its bishop</dd>
+    <dt>Walingeford</dt><dd>Wallingford, and Maud</dd>
+    <dt>Sarum</dt><dd>Salisbury, and the other bishop</dd>
+  </dl>
+  <p class="track">"The old track between Oxeneford and Wyncestre is there climbing the hill from which Gilles and Alvric surveyed their lands."</p>
+</section>
+
+<section class="chron" id="chron">
+  <div>
+    <h2>From the Chronicles</h2>
+    <p class="lament">The Bishop of Wyncestre sat back in his episcopal throne, settling into the cushions stuffed with the finest of Hamptunscire wool, and closed his eyes. It was the most unpredictable but the most preventable of catastrophes that had set the ass braying in the first place.</p>
+    <p class="src">The Lamentations of Henry, Bishop of Wyncestre, 1096 to 1171</p>
+  </div>
+  <div>
+    <h3 style="font-size:1.8rem">What he read</h3>
+    <p style="margin:.5rem 0 0">The chroniclers who were writing at the time, and who left Gilles out:</p>
+    <ul>
+      <li>William of Malmesbury</li>
+      <li>Henry of Huntingdon</li>
+      <li>John of Worcester</li>
+      <li>Orderic Vitalis</li>
+      <li>the Gesta Stephani</li>
+    </ul>
+    <p style="margin-top:1rem"><a href="https://www.tdowen.co.uk/bibliography">His full note on sources</a></p>
+  </div>
+</section>
+
+<section class="owen" id="owen">
+  <img src="img/owen.jpg" alt="T D Owen leaning on an old wooden desk" width="757" height="800" loading="lazy">
+  <div>
+    <h2>T D Owen</h2>
+    <p style="margin-top:1rem">A history teacher for much of his life. His classroom had a wardrobe of historical costumes, cases of ancient artefacts and drawers full of model battlefields, and on the playing fields his pupils re-created the Dam Busters raid and the first tank battles of the Great War.</p>
+    <p>Then came years in record offices, museums, university libraries, abbeys and monasteries, and time on his hands and knees as "a very amateur archaeologist".</p>
+    <p class="cic">"I have aspired to blend fact with fiction, with fact informing the fiction."</p>
+  </div>
+</section>
+
+<section class="fair" id="fair">
+  <h2 style="color:var(--ink)">Meet him in Oxford</h2>
+  <p class="tbl">N11</p>
+  <p>Sunday 22 November, the Oxford Indie Book Fair, Examination Schools, High Street.</p>
+  <p class="talks">He also speaks, teaches and guides battlefield tours.<br><a class="btn pale" href="https://www.tdowen.co.uk/">Get in touch</a></p>
+</section>
+</main>
+<footer>A mockup made by Sparsh Saini for T D Owen. Not affiliated, not live.</footer>
+
+<script>
+(() => {
+  const btn = document.querySelector('.bird'), menu = document.getElementById('menu');
+  const setOpen = o => { menu.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); if (o) menu.querySelector('a').focus(); };
+  btn.addEventListener('click', () => setOpen(true));
+  menu.querySelector('.x').addEventListener('click', () => { setOpen(false); btn.focus(); });
+  menu.addEventListener('click', e => { if (e.target === menu || e.target.closest('a')) setOpen(false); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+
+  // the cage: every bird on the cover starts gathered close above the monk's head,
+  // and your scroll lets them go, one after another, each on its own curve to where the cover painted it
+  const hero = document.querySelector('.hero'), art = hero.querySelector('.art'), cam = hero.querySelector('.cam');
+  const birds = [...hero.querySelectorAll('.bd')], c1 = hero.querySelector('.c1'), c2 = hero.querySelector('.c2');
+  const END = [[64.5, 5.04], [6.62, 5.83], [28.69, 12.13], [82.56, 9.42], [73.56, 15.46], [43.38, 16.96], [69.56, 22.21], [84.62, 25.25], [19.38, 51.08]];
+  const HEAD = [28, 74];
+  const KNOT = [[-2.5, -1.5], [2, -3.5], [0, -5], [3, .5], [-3, 1.5], [1, -1], [-1, 2.5], [2.5, 2.5], [-2, -4]];
+  const ORDER = [5, 2, 8, 0, 6, 1, 4, 3, 7];   // which bird leaves first
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const out = t => 1 - Math.pow(1 - t, 2.4);
+  let W = 1, H = 1, ticking = false;
+  const measure = () => { W = art.offsetWidth; H = art.offsetHeight; };
+  function frame() {
+    ticking = false;
+    let p;
+    if (still.matches) p = 1;
+    else { const r = hero.getBoundingClientRect(); p = clamp(-r.top / (hero.offsetHeight - innerHeight)); }
+    birds.forEach((el, i) => {
+      const k = ORDER.indexOf(i), t = clamp((p - .1 - k * .055) / .36), e = out(t);
+      const [ex, ey] = END[i], sx = HEAD[0] + KNOT[i][0], sy = HEAD[1] + KNOT[i][1];
+      const cx = sx + (ex - sx) * .15 + (k % 2 ? 14 : -10), cy = Math.min(sy, ey) + 6;   // curve control
+      const x = (1 - e) * (1 - e) * sx + 2 * (1 - e) * e * cx + e * e * ex;
+      const y = (1 - e) * (1 - e) * sy + 2 * (1 - e) * e * cy + e * e * ey;
+      const s = .5 + .5 * e;
+      const flap = 1 - .35 * Math.abs(Math.sin(t * Math.PI * 7)) * (1 - e);
+      const tilt = (ex > sx ? 1 : -1) * 18 * Math.sin(t * Math.PI);
+      el.style.transform = `translate3d(${((x - ex) / 100 * W).toFixed(1)}px,${((y - ey) / 100 * H).toFixed(1)}px,0) rotate(${tilt.toFixed(1)}deg) scale(${s.toFixed(3)},${(s * flap).toFixed(3)})`;
+    });
+    const z = 1 + .3 * (1 - out(clamp(p / .7)));
+    cam.style.transform = `scale(${z.toFixed(4)})`;
+    const k = clamp((p - .8) / .12);
+    c1.style.opacity = (1 - k).toFixed(3);
+    c2.style.opacity = k.toFixed(3);
+    c2.classList.toggle('live', k > .5);
+  }
+  const go = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+  addEventListener('scroll', go, { passive: true });
+  addEventListener('resize', () => { measure(); go(); });
+  still.addEventListener('change', go);
+  measure(); frame();
+})();
+</script>
+</body>
+</html>
